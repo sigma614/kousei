@@ -1,0 +1,124 @@
+{
+  "tasks": [
+    {
+      "command": "git add .",
+      "label": "git-add",
+      "type": "shell"
+    },
+    {
+      "command": "git commit -a",
+      "dependsOn": [
+        "add",
+        "template"
+      ],
+      "label": "git-commit",
+      "type": "shell"
+    },
+    {
+      "command": "git diff --stat",
+      "label": "git-diff",
+      "type": "shell"
+    },
+    {
+      "command": "iconv -c -t UTF-8 '${relativeFileDirname}/${fileBasename}' > test.txt && mv -f test.txt '${relativeFileDirname}/${fileBasename}'",
+      "label": "trans-utf8",
+      "type": "shell"
+    },
+    {
+      "command": "iconv -c -t SJIS '${relativeFileDirname}/${fileBasename}' > test.txt && mv -f test.txt '${relativeFileDirname}/${fileBasename}'",
+      "label": "trans-sjis",
+      "type": "shell"
+    },
+    {
+      "command": "py ./done.py",
+      "label": "git-done",
+      "type": "shell"
+    },
+    {
+      "command": "git commit -a --message=`date +%Y%m%d_%H%M%S`",
+      "dependsOn": [
+        "add"
+      ],
+      "label": "post",
+      "type": "shell"
+    },
+    {
+      "command": "git push",
+      "label": "git-push",
+      "type": "shell"
+    },
+    {
+      "command": "pytest -v -s --cov=. --cov-report xml:cov.xml",
+      "label": "pytest",
+      "type": "shell"
+    },
+    {
+      "command": "py ./template.py",
+      "label": "git-template",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ruby.py '${relativeFileDirname}/${fileBasename}' pixiv",
+      "label": "trans-rb-pixiv",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ruby.py '${relativeFileDirname}/${fileBasename}' aozora",
+      "label": "trans-rb-aozora",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ruby.py '${relativeFileDirname}/${fileBasename}' latex",
+      "label": "trans-rb-latex",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ruby.py ${relativeFileDirname}/${fileBasename} privatter",
+      "label": "trans-rb-privatter",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ruby.py '${relativeFileDirname}/${fileBasename}' markdown",
+      "label": "trans-rb-markdown",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ginza_ent.py '${relativeFileDirname}/${fileBasename}'",
+      "label": "proof-ginza-ent",
+      "type": "shell"
+    },
+    {
+      "command": "python ./gitleven.py '${relativeFileDirname}/${fileBasename}'",
+      "label": "git-leven",
+      "type": "shell"
+    },
+    {
+      "command": "py ./ginza_dep.py ${selectedText}",
+      "label": "proof-ginza-dep",
+      "type": "shell"
+    },
+    {
+      "command": "start https://ennach.sakura.ne.jp/Morph/",
+      "label": "proof-morphology-cgi",
+      "type": "shell"
+    },
+    {
+      "command": "start https://enno.jp/",
+      "label": "proof-enno",
+      "type": "shell"
+    },
+    {
+      "command": "cd 'C:\\Users\\inuyo\\Documents\\novel_supporter_1.8.1\\NovelSupporter-win32-x64' && ./NovelSupporter.exe",
+      "label": "proof-novel-supporter",
+      "type": "shell"
+    },
+    {
+      "command": "cd C:/khcoder3 && ./kh_coder.exe",
+      "label": "proof-kh-coder",
+      "type": "shell"
+    }
+  ],
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0"
+}
